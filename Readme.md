@@ -1,3 +1,8 @@
+![Image alt](https://github.com/uniqueVlados/p2p_DEMO/blob/main/p2p_1.png)
+![Image alt](https://github.com/uniqueVlados/p2p_DEMO/blob/main/p2p_2.png)
+![Image alt](https://github.com/uniqueVlados/p2p_DEMO/blob/main/p2p_4.png)
+![Image alt](https://github.com/uniqueVlados/p2p_DEMO/blob/main/p2p_3.png)
+
 # Бэкенд для платежной системы p2p
 
 ## Настройки
