@@ -1,0 +1,132 @@
+<h1>API</h1>
+<h2>Users</h2>
+<h2>Заголовки</h2>
+<p>Для всех запросов:
+<code>Content-Type: application/json</code>
+Дополнительно для запросов с авторизацией:
+<code>Authorization: Token &lt;token&gt;</code>
+где <code>&lt;token&gt;</code> - токен авторизации, выдаваемый при регистрации.</p>
+<p>Дополнительно для запросов от партнёра:
+<code>Secretkey: &lt;secret_key&gt;</code>
+где <code>&lt;secret_key&gt;</code> - секретный ключ, выдаваемый при регистрации.</p>
+<h3>Создать пользователя</h3>
+<p><strong>POST</strong> <code>api/users/user/create/</code>
+<code>json
+{
+    "email": "btp442-4@mail.ru",
+    "password": "ksjdjklkkUUgh"
+}</code>
+<strong>Ответ</strong>
+<code>json
+{
+    "success": true,
+    "token": "3060ceb29905cebc675cd0eb90b93e5a0c8f88eb"
+}</code>
+После создания пользователя его регистрацию необходимо подтвердить в админке Джанго (<code>confirmed=True</code>).</p>
+<h3>Авторизация</h3>
+<p><strong>POST</strong> <code>api/users/token-auth/</code>
+<code>json
+{
+    "email": "btp442-4@mail.ru",
+    "password": "ksjdjklkkUUgh"
+}</code></p>
+<p><strong>Ответ</strong>
+<code>json
+{
+    "success": true,
+    "token": "7129892431b8dafe942714bb54ee62749a7e78e7",
+    "user_id": 2
+}</code></p>
+<h2>Переводы</h2>
+<h3>Пополнение</h3>
+<p><strong>POST</strong> <code>api/finances/replenish/</code>
+<code>json
+{
+    "amount": 500
+}</code>
+<strong>Ответ</strong>
+<code>json
+{
+    "status": "new",
+    "uid": "fa1a7eab-38f2-4716-912a-d999878b2663"
+}</code></p>
+<h3>Списание</h3>
+<p><strong>POST</strong> <code>api/finances/withdraw/</code>
+<code>json
+{
+    "amount": 600,
+     "card_number": 1234123412349876
+}</code>
+<strong>Ответ</strong>
+<code>json
+{
+    "status": "new",
+    "uid": "eb8761af-edec-4858-aeea-86fcab997469"
+}</code></p>
+<h3>Статус платежного поручения</h3>
+<p><strong>POST</strong> <code>api/finances/get-payment-status/</code>
+<code>json
+{
+     "uid": "ae5c2ee7-31cb-4f22-baaf-64551a05a313"
+}</code>
+<strong>Ответ</strong>
+<code>json
+{
+    "status": "approved"
+}</code></p>
+<h3>Баланс счёта партнёра</h3>
+<p><strong>GET</strong> <code>api/finances/get-balance/</code></p>
+<p><strong>Ответ</strong>
+<code>json
+{
+    "balance": 2112.0
+}</code></p>
+<h3>Список платежных поручений</h3>
+<p><strong>GET</strong> <code>api/finances/get-payrolls/</code></p>
+<p><strong>Ответ</strong>
+<code>json
+[
+{
+"uid": "ae5c2ee7-31cb-4f22-baaf-64551a05a313",
+"amount": "600.00",
+"payment_type": "replenishment",
+"status": "approved"
+},
+{
+"uid": "dd4ef3c4-8b53-4e88-aa8f-015beedbe5eb",
+"amount": "800.00",
+"payment_type": "replenishment",
+"status": "approved"
+},
+{
+"uid": "26c2c7f1-34ef-4fc4-a281-358dc140df2d",
+"amount": "1000.00",
+"payment_type": "replenishment",
+"status": "failed"
+},
+{
+"uid": "144ed652-3242-42bc-a595-fb07ac48ab5d",
+"amount": "500.00",
+"payment_type": "replenishment",
+"status": "rejected"
+},
+{
+"uid": "8320593b-2c92-40d6-81b4-d79a5bd71f12",
+"amount": "550.00",
+"payment_type": "replenishment",
+"status": "approved"
+},
+{
+"uid": "416f8b9b-90e0-4bb2-9ed8-f87bb2844db2",
+"amount": "600.00",
+"payment_type": "withdrawl",
+"status": "approved"
+}
+]</code></p>
+<h3>Получить секретный ключ (ТОЛЬКО в режиме разработки)</h3>
+<p><strong>GET</strong> <code>/api/users/get-key/</code></p>
+<p><strong>Ответ</strong>
+<code>json
+{
+    "secret_key": "l&gt;?7R7uswqX|wEzg_*~QIi7+%^N|Oh}gqV#{$H=0)5D0;5O,Tlro;c*v,+gADm.1(oe,2HD,REXc&lt;=x*a1^QtX/tF_eqy[wCtoE=j#neS{?{YiZX.|eK;b/NY4?V?1B/"
+}</code></p>

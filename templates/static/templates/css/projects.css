@@ -1,0 +1,27 @@
+img.front-image {
+    height: 100%;
+    min-height: 100%;
+    object-fit: cover; 
+    object-position: center; 
+    }
+
+img.market-image {
+    max-height: 500px;
+    max-width: 100%;
+    object-fit: cover; 
+    object-position: center; 
+    }
+
+footer.fixed-bottom {
+    background-color: #054a2e;
+    color: lightgrey;
+}   
+
+nav.navbar {
+    background-color: #9e2d00
+}
+
+#logout {
+    font-size: 2rem;
+    color: ghostwhite;
+}
